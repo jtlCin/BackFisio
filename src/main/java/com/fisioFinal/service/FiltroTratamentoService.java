@@ -85,25 +85,25 @@ public class FiltroTratamentoService {
 		Calendar now = Calendar.getInstance();   
 		int year = now.get(Calendar.YEAR);
 		int sexoToInt=0;
-		if(sexo.equals("Homem"))sexoToInt=1;
+		if(sexo.equals("Masculino"))sexoToInt=1;
 		for(int i=0;i<filtro.size();i++){
-			relevance=0;
+			relevance=20;
 			FiltroTratamento aux = filtro.get(i);
 			//fazer os aumentos e diminuições de relevancia aqui de acordo com os atributos dos tratamentos
 			relevance-=(year - (int)Integer.valueOf(aux.getAnoPublicacao()))*(0.15);
 			int totAval = aux.getAvaliacoesNegativas()+aux.getAvaliacoesNegativas();
 			if(totAval==0)totAval++;
 			relevance+=2*((aux.getAvaliacoesPositivas()-aux.getAvaliacoesNegativas())/(totAval));
-			relevance+=(aux.getMediaComentEficacia()+aux.getMediaComentTempoTrat())*(0.2);
+			relevance+=((aux.getMediaComentEficacia()+aux.getMediaComentTempoTrat())*(0.2))%5;
 			if(aux.getTempoLesao().equals(tempoLesao)){
-				relevance+=10;
+				relevance+=20;
 			}
 			if(aux.getSexo()==sexoToInt){
-				relevance+=10;
+				relevance+=20;
 			}
-			else if(aux.getSexo()==2)relevance+=6;
+			else if(aux.getSexo()==2)relevance+=12;
 			if(aux.getFaixaEtaria().equals(faixaEtaria)){
-				relevance+=10;
+				relevance+=20;
 			}
 			filtro.get(i).setRelevance(relevance);
 		}
