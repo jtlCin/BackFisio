@@ -28,6 +28,14 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			
+			<!-- Cloud Google -->
+			<plugin>
+   				<groupId>com.google.appengine</groupId>
+   				<artifactId>appengine-maven-plugin</artifactId>
+   				<version>1.9.54</version>
+			</plugin>
+			
 		</plugins>
 	</build>
 
@@ -88,7 +96,6 @@
 			<artifactId>cors-filter</artifactId>
 			<version>2.4</version>
 		</dependency>
-
 
 	</dependencies>
 </project>
