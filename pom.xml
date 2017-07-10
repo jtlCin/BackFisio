@@ -53,7 +53,8 @@
                     <postBuildHookScript>verify</postBuildHookScript>
                     <localRepositoryPath>${project.build.directory}/local-repo</localRepositoryPath>
                     <goals>
-                        <goal>appengine:update</goal>
+                        <goal>appengine:run</goal>
+			<goal>appengine:update</goal>
                         <goal>appengine:update_cron</goal>
                         <goal>appengine:update_dos</goal>
                         <goal>appengine:update_indexes</goal>
